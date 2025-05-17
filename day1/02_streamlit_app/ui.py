@@ -188,7 +188,8 @@ def display_metrics_analysis(history_df):
     st.write("##### 正確性の分布")
     accuracy_counts = analysis_df['正確性'].value_counts()
     if not accuracy_counts.empty:
-        st.bar_chart(accuracy_counts)
+        #st.bar_chart(accuracy_counts)
+        st.line_chart(accuracy_counts)
     else:
         st.info("正確性データがありません。")
 
