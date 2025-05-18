@@ -18,11 +18,13 @@ class DataLoader:
     def load_titanic_data(path=None):
         """Titanicデータセットを読み込む"""
         if path:
+            print("loading data from path")
             return pd.read_csv(path)
         else:
             # ローカルのファイル
             local_path = "data/Titanic.csv"
             if os.path.exists(local_path):
+                print("loading data from local path")
                 return pd.read_csv(local_path)
 
     @staticmethod
@@ -61,6 +63,7 @@ class DataValidator:
 
         # Great Expectationsを使用したバリデーション
         try:
+            print("データ検証を開始します")
             context = gx.get_context()
             data_source = context.data_sources.add_pandas("pandas")
             data_asset = data_source.add_dataframe_asset(name="pd dataframe asset")
