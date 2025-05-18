@@ -129,3 +129,20 @@ def test_value_ranges(sample_data):
         results.append(result)
         is_successful = all(result.success for result in results)
     assert is_successful, "データの値範囲が期待通りではありません"
+
+
+# --- NEW TEST ---
+def test_no_duplicate_rows(sample_data):
+    """データセットに重複行がないことを確認 (Confirm no duplicate rows in the dataset)"""
+    # Consider which columns define a "duplicate".
+    # For example, if 'PassengerId' was present and unique, duplicates on other columns might be acceptable.
+    # Here, we check for duplicates across all columns present in the loaded sample_data.
+    # If you have an ID column that should be unique, test its uniqueness separately.
+
+    # Find duplicate rows across all columns
+    duplicate_rows = sample_data[sample_data.duplicated()]
+    num_duplicate_rows = len(duplicate_rows)
+
+    assert (
+        num_duplicate_rows == 0
+    ), f"データセットに {num_duplicate_rows} 件の重複行が見つかりました (Found {num_duplicate_rows} duplicate rows in the dataset)"
