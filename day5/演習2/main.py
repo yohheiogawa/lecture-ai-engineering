@@ -253,6 +253,7 @@ def test_model_performance():
 
 if __name__ == "__main__":
     # データロード
+    print("データをロードしています...")
     data = DataLoader.load_titanic_data()
     X, y = DataLoader.preprocess_titanic_data(data)
 
